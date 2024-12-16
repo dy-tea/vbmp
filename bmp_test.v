@@ -1,9 +1,10 @@
 module bmp
 
-fn test_bmp() {
-	width := 1920
-	height := 1080
+const file_name := 'out.bmp'
+const width := 1920
+const height := 1080
 
+fn test_write() {
 	mut b := new(width, height)
 
 	for i in 0 .. width {
@@ -12,5 +13,14 @@ fn test_bmp() {
 		}
 	}
 
-	b.write('out.bmp')!
+	b.write(file_name)!
+}
+
+fn test_read_write() {
+	mut b := read(file_name)!
+
+	assert b.width == width
+	assert b.height == height
+
+	b.write('out2.bmp')!
 }
