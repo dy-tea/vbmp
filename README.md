@@ -15,7 +15,7 @@ const width := 1920
 const height := 1080
 
 fn main() {
-    mut bitmap := bmp.new(width, height)
+    mut bitmap := vbmp.new(width, height)
 
     for i in 0..width {
         for j in 0..height {
