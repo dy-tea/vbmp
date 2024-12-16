@@ -1,4 +1,4 @@
-module bmp
+module vbmp
 
 import os
 
