@@ -25,7 +25,7 @@ struct InfoHeader {
 	imp_colors  int
 }
 
-struct Bitmap {
+pub struct Bitmap {
 	width  int
 	height int
 mut:
@@ -54,9 +54,34 @@ pub fn (mut bp Bitmap) set_pixel(x u32, y u32, r u8, g u8, b u8) ! {
 	}
 }
 
+// load bitmap from file
+pub fn read(path string) !Bitmap {
+	mut file := os.open_file(path, 'rb')!
+	defer {
+		file.close()
+	}
+
+	mut fh := FileHeader{}
+	file.read_struct(mut fh)!
+
+	mut ih := InfoHeader{}
+	file.read_struct_at(mut ih, sizeof(FileHeader))!
+
+	pixels := file.read_bytes_at(ih.width * ih.height * 3, sizeof(InfoHeader) + sizeof(FileHeader))
+
+	return Bitmap{
+		width: ih.width
+		height: ih.height
+		pixels: pixels
+	}
+}
+
 // write bitmap to file
 pub fn (bp Bitmap) write(path string) ! {
 	mut file := os.open_file(path, 'wb')!
+	defer {
+		file.close()
+	}
 
 	fh := FileHeader{
 		size:   int(sizeof(FileHeader)) + int(sizeof(InfoHeader)) + bp.width * bp.height * 3
