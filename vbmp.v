@@ -70,7 +70,7 @@ pub fn read(path string) !Bitmap {
 	pixels := file.read_bytes_at(ih.width * ih.height * 3, sizeof(InfoHeader) + sizeof(FileHeader))
 
 	return Bitmap{
-		width: ih.width
+		width:  ih.width
 		height: ih.height
 		pixels: pixels
 	}

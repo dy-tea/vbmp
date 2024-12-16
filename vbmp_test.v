@@ -1,8 +1,8 @@
 module bmp
 
-const file_name := 'out.bmp'
-const width := 1920
-const height := 1080
+const file_name = 'out.bmp'
+const width = 1920
+const height = 1080
 
 fn test_write() {
 	mut b := new(width, height)
