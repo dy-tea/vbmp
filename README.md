@@ -1,6 +1,6 @@
 # vbmp
 
-Read and write bitmap files with in the [V programming language](https://vlang.io).
+Read and write bitmap files with the [V programming language](https://vlang.io).
 
 ### Installation
 ```
