@@ -6,14 +6,14 @@ import os
 struct FileHeader {
 	h1       u8 = 66
 	h2       u8 = 77
-	size     int
+	size     u32
 	reserved int
 	offset   int
 }
 
 @[packed]
 struct InfoHeader {
-	size        int = 40
+	size        u32 = 40
 	width       int
 	height      int
 	planes      i16 = 1
@@ -84,7 +84,7 @@ pub fn (bp Bitmap) write(path string) ! {
 	}
 
 	fh := FileHeader{
-		size:   int(sizeof(FileHeader)) + int(sizeof(InfoHeader)) + bp.width * bp.height * 3
+		size:   u32(sizeof(FileHeader)) + u32(sizeof(InfoHeader)) + u32(bp.width * bp.height * 3)
 		offset: int(sizeof(FileHeader) + sizeof(InfoHeader))
 	}
 
