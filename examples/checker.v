@@ -12,5 +12,5 @@ fn main() {
 		}
 	}
 
-  bitmap.write('checker.bmp')!
+	bitmap.write('checker.bmp')!
 }
