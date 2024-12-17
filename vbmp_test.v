@@ -1,4 +1,4 @@
-module bmp
+module vbmp
 
 const file_name = 'out.bmp'
 const width = 1920
