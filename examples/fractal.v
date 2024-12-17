@@ -29,9 +29,9 @@ fn main() {
 			fy := (y - width / 2.0) * 2.0 / width
 			iters := get_iters(fx, fy)
 
-			g := u8(256 * f64(iters) / max_iters)
+			c := u8(256 * f64(iters) / max_iters)
 
-			bitmap.set_pixel(x, y, g, g, g)!
+			bitmap.set_pixel(x, y, c, c, c)!
 		}
 	}
 
