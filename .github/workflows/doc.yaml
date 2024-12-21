@@ -1,0 +1,27 @@
+name: Create Docs
+on:
+  push:
+    branches: '*'
+
+jobs:
+  update-docs:
+    name: Update docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Setup V
+        uses: vlang/setup-v@v1.4
+
+      - name: Generate docs
+        uses: test-room-7/action-create-v-docs@v0
+        with:
+          docs-dir: docs
+
+      - name: Update docs
+        uses: test-room-7/action-update-file@v1
+        with:
+          file-path: docs/*
+          commit-msg: "chore: update docs"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
