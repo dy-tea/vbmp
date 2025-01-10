@@ -1,10 +1,11 @@
 # vbmp
 
 Read and write bitmap files with the [V programming language](https://vlang.io).
+See the docs [here](https://dy-tea.github.io/vbmp/).
 
 ### Installation
 ```
-v install https://github.com/dy-tea/vbmp.git
+v install dy-tea.vbmp
 ```
 
 ### Usage
